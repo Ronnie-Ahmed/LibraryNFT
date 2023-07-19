@@ -54,7 +54,7 @@ export const UserProfile = () => {
           </div>
         </div>
       ) : (
-        <section className="flex flex-col md:flex-row  items-center mx-4 px-1 md:mx-16 rounded-lg p-4 md:p-8 transform transition-all duration-300 shadow-2xl shadow-cyan-400 hover:scale-105 mb-8">
+        <section className="flex flex-col md:flex-row items-center px-1 md:mx-16 rounded-lg p-4 md:p-8 transform transition-all duration-300 shadow-2xl shadow-black hover:scale-105 mb-8 mt-20 md:mt-0">
           {data.map((item, key) => (
             <div key={item.tokenId.toString()} className="mr-4 ml-4 mb-6">
               {/* {address === item.bookowner ? ( */}

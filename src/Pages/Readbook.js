@@ -78,17 +78,15 @@ export const Readbook = () => {
 
   return (
     <div
-      className="bg-gray-800 flex justify-center items-center"
+      className="bg-gray-800 flex justify-center items-center min-h-screen"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
       }}
     >
-      {status === "undefined " ||
-      status === "disconnected" ||
+      {status === "undefined" ||
       status === "disconnected" ||
       status === "connecting" ? (
         <div className="flex items-center justify-center m-5 mx-4 px-1 md:mx-16 rounded-lg transform transition-all duration-300 shadow-2xl shadow-cyan-400 hover:scale-105 mb-8">
@@ -96,10 +94,12 @@ export const Readbook = () => {
             <img
               src={walletconnect}
               alt="loading"
-              class="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
+              className="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
             />
-            <h1 className="text-3xl font-bold ">Connect Wallet </h1>
-            <h1 className="text-3xl font-bold ">Use Mumbai Testnet </h1>
+            <h1 className="text-3xl font-bold text-center">Connect Wallet</h1>
+            <h1 className="text-3xl font-bold text-center">
+              Use Mumbai Testnet
+            </h1>
           </div>
         </div>
       ) : isLoading ? (
@@ -114,19 +114,21 @@ export const Readbook = () => {
           </div>
         </div>
       ) : (
-        <section className="flex flex-col md:flex-row  items-center  px-1 md:mx-16 rounded-lg p-4 md:p-8 transform transition-all duration-300 shadow-2xl shadow-black hover:scale-105 mb-8">
+        <section className="flex flex-col md:flex-row items-center px-1 md:mx-16 rounded-lg p-4 md:p-8 transform transition-all duration-300 shadow-2xl shadow-black hover:scale-105 mb-8 mt-20 md:mt-0">
           <button ref={buttonRef} onClick={handleButtonClick}></button>
-          {data.map((item, key) => (
-            <div key={item.tokenId} className="mr-4 ml-4 mb-6">
-              <Card
-                price={item.price}
-                image={item.image}
-                tokenId={item.tokenId}
-                owner={item.owner}
-                name={item.booktitle}
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {data.map((item, key) => (
+              <div key={item.tokenId} className="mb-6">
+                <Card
+                  price={item.price}
+                  image={item.image}
+                  tokenId={item.tokenId}
+                  owner={item.owner}
+                  name={item.booktitle}
+                />
+              </div>
+            ))}
+          </div>
         </section>
       )}
     </div>

@@ -110,15 +110,16 @@ export const Bookid = () => {
   try {
     return (
       <div
-        className="bg-gray-800 flex justify-center items-center h-screen"
+        className="bg-gray-800 flex flex-col items-center"
         style={{
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          minHeight: "100vh",
         }}
       >
-        {status === "undefined " ||
+        {status === "undefined" ||
         status === "disconnected" ||
         status === "disconnected" ||
         status === "connecting" ? (
@@ -127,10 +128,10 @@ export const Bookid = () => {
               <img
                 src={walletconnect}
                 alt="loading"
-                class="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
+                className="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
               />
-              <h1 className="text-3xl font-bold ">Connect Wallet </h1>
-              <h1 className="text-3xl font-bold ">Use Mumbai Testnet </h1>
+              <h1 className="text-3xl font-bold">Connect Wallet </h1>
+              <h1 className="text-3xl font-bold">Use Mumbai Testnet </h1>
             </div>
           </div>
         ) : isLoading ? (
@@ -141,12 +142,12 @@ export const Bookid = () => {
                 alt="loading"
                 className="w-60 h-60 object-cover rounded-full mb-4"
               />
-              <h1 className="text-3xl font-bold text-white ">Loading.......</h1>
+              <h1 className="text-3xl font-bold text-white">Loading.......</h1>
             </div>
           </div>
         ) : (
-          <div className="flex flex-col">
-            <section className="flex flex-col md:flex-row items-center px-1 md:mx-16 rounded-lg p-4 md:p-8 shadow-2xl shadow-cyan-800 mb-8 overflow-hidden">
+          <div className="flex flex-col mt-20">
+            <section className="flex flex-col md:flex-row items-center px-1 md:mx-16 rounded-lg p-4 md:p-8 shadow-2xl shadow-cyan-800 mb-8 overflow-hidden mt-2 md:mt-0">
               <div className="flex items-center justify-center md:w-3/5">
                 <img
                   src={`https://ipfs.io/ipfs/${jsonData.image}`}
@@ -155,26 +156,26 @@ export const Bookid = () => {
                 />
               </div>
               <div className="md:w-3/5 md:pl-8 bg-gradient-to-r from-gray-500 to-gray-600 bg-opacity-20 rounded-lg">
-                <h2 className="text-3xl font-bold mb-2 mt-2 text-white text-center">
+                <h2 className="text-3xl font-bold mb-2 mt-2 text-white text-center sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
                   {jsonData.booktitle}
                 </h2>
-                <p className="text-lg font-bold  mb-4 text-white text-center">
+                <p className="text-lg font-bold mb-4 text-white text-center sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                   By {jsonData.name}
                 </p>
-                <p className="text-lg font-bold  mb-4 text-white">
+                <p className="text-lg font-bold mb-4 text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                   Price: {price} {chain.nativeCurrency.symbol}
                 </p>
-                <p className="text-lg font-bold  mb-4 text-white">
+                <p className="text-lg font-bold mb-4 text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                   Owned by: {truncatedOwner}
                 </p>
-                <p className="text-lg mb-8 text-white">
+                <p className="text-lg mb-8 text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                   <span className="font-bold">Book Overview:</span>{" "}
                   {jsonData.description}
                 </p>
-                <div className="flex justify-center mb-4 space-x-4">
+                <div className="flex flex-col md:flex-row items-center justify-center mb-2 space-y-4 md:space-y-0 md:space-x-4">
                   {(owner === address || access) && newloading === false ? (
                     <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md border-2 border-blue-500 transition-all duration-300 shadow-md backdrop-filter backdrop-blur-md bg-opacity-70"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md border-2 border-blue-500 transition-all duration-300 shadow-md backdrop-filter backdrop-blur-md bg-opacity-70 w-1/3 md:w-auto text-base md:text-lg lg:text-xl xl:text-2xl"
                       onClick={handleread}
                     >
                       Read Book
@@ -191,7 +192,7 @@ export const Bookid = () => {
                     </button>
                   ) : (
                     <button
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-md border-2 border-red-500 transition-all duration-300 shadow-md backdrop-filter backdrop-blur-md bg-opacity-70"
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-md border-2 border-red-500 transition-all duration-300 shadow-md backdrop-filter backdrop-blur-md bg-opacity-70 w-1/3 md:w-auto text-base md:text-lg lg:text-xl xl:text-2xl"
                       onClick={handlesale}
                     >
                       Buy Now
@@ -199,13 +200,12 @@ export const Bookid = () => {
                   )}
                   {address === owner && (
                     <button
-                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-md border-2 border-green-500 transition-all duration-300 shadow-md backdrop-filter backdrop-blur-md bg-opacity-70"
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-md border-2 border-green-500 transition-all duration-300 shadow-md backdrop-filter backdrop-blur-md bg-opacity-70 w-1/3 md:w-auto text-base md:text-lg lg:text-xl xl:text-2xl"
                       onClick={() => setIsFormOpen(true)}
                     >
                       Open Form
                     </button>
                   )}
-
                   {isFormOpen && (
                     <FormPopup
                       onClose={() => setIsFormOpen(false)}
@@ -216,25 +216,27 @@ export const Bookid = () => {
                 </div>
               </div>
             </section>
-            <div className="flex justify-center ">
-              <table className="w-full max-w-2xl bg-gray-800 text-white rounded-xl">
-                <thead>
-                  <tr>
-                    <th className="py-2 px-4 border-b ">
-                      List of Address Has Access to this Book
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {listData.map((item, index) => (
-                    <tr key={index} className={"bg-gray-700"}>
-                      <td className="py-2 px-4 border-b text-center font-bold">
-                        Address: {item}
-                      </td>
+            <div className="flex justify-center mb-2">
+              <div className="w-full max-w-md">
+                <table className="w-full bg-gray-800 text-white rounded-xl">
+                  <thead>
+                    <tr>
+                      <th className="py-2 px-4 border-b">
+                        List of Addresses that Have Access to this Book
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {listData.map((item, index) => (
+                      <tr key={index} className="bg-gray-700">
+                        <td className="py-2 px-4 border-b text-center font-bold">
+                          Address: {item}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         )}
