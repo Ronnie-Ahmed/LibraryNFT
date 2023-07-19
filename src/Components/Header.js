@@ -2,9 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ConnectWallet } from "@thirdweb-dev/react";
-import image2 from "../assets/mintbackground.jpg";
-
-import nfticon from "../assets/NFT_Icon.png";
+import nfticon from "../assets/iconlibrary2.jpg";
 import { FcHome } from "react-icons/fc";
 import { GrTransaction } from "react-icons/gr";
 import { FcMoneyTransfer } from "react-icons/fc";
@@ -36,14 +34,7 @@ export const Header = () => {
   }, []);
   try {
     return (
-      <header
-        className="fixed top-0 left-0 z-50 text-white py-1 w-full"
-        style={{
-          backgroundImage: `url(${image2})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+      <header className="fixed top-0 left-0 z-50 text-white py-1 w-full">
         <nav className="flex items-center justify-between px-4 ">
           <Link to="/">
             <div className="flex items-center   hover:border-blue-500 rounded-md p-2 bg-gradient-to-r from-gray-500 via-gray-600 to-gray-800">
@@ -52,9 +43,7 @@ export const Header = () => {
                 alt="Logo"
                 className="w-8 h-8 mr-2 rounded-full"
               />
-              <h1 className="text-xl font-bold text-gray-200">
-                NFT MARKETPLACE
-              </h1>
+              <h1 className="text-xl font-bold text-gray-200">LibraryNFT</h1>
             </div>
           </Link>
 
@@ -73,7 +62,7 @@ export const Header = () => {
               </button>
             </Link>
             <Link
-              to="/sell"
+              to="/Readbook"
               spy={true}
               smooth={true}
               offset={-70}
@@ -88,11 +77,13 @@ export const Header = () => {
                 }}
               >
                 <GrTransaction className="inline-block mr-2 text-2xl" />
-                <span className="text-l font-bold text-gray-200">Mint</span>
+                <span className="text-l font-bold text-gray-200">
+                  Read Books
+                </span>
               </button>
             </Link>
             <Link
-              to="/buy"
+              to="/Uploadbook"
               spy={true}
               smooth={true}
               offset={-70}
@@ -107,14 +98,16 @@ export const Header = () => {
                 }}
               >
                 <FcMoneyTransfer className="inline-block mr-2 text-2xl" />
-                <span className="text-l font-bold text-gray-200">Buy</span>
+                <span className="text-l font-bold text-gray-200">
+                  Upload Book
+                </span>
               </button>
             </Link>
           </div>
           <div className="flex flex-row space-between center p-1">
             {active && <ConnectWallet theme="dark" />}
             {address ? (
-              <Link to="/userprofile">
+              <Link to="/UserProfile">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -133,13 +126,13 @@ export const Header = () => {
 
           <div className="md:hidden">
             <button
-              className="text-white hover:text-gray-300"
+              className="text-white hover:text-gray-300 bg-black"
               onClick={toggleMenu}
             >
               <svg
                 className="w-6 h-6"
                 fill="none"
-                stroke="currentColor"
+                stroke="gold"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -178,7 +171,7 @@ export const Header = () => {
               </button>
             </Link>
             <Link
-              to="/sell"
+              to="/Readbook"
               spy={true}
               smooth={true}
               offset={-70}
@@ -193,11 +186,13 @@ export const Header = () => {
                 }}
               >
                 <GrTransaction className="inline-block mr-2 text-2xl" />
-                <span className="text-l font-bold text-gray-200">Mint NFT</span>
+                <span className="text-l font-bold text-gray-200">
+                  Read Books
+                </span>
               </button>
             </Link>
             <Link
-              to="/buy"
+              to="/Uploadbook"
               spy={true}
               smooth={true}
               offset={-70}
@@ -212,7 +207,9 @@ export const Header = () => {
                 }}
               >
                 <FcMoneyTransfer className="inline-block mr-2 text-2xl" />
-                <span className="text-l font-bold text-gray-200">Buy</span>
+                <span className="text-l font-bold text-gray-200">
+                  Upload Book
+                </span>
               </button>
             </Link>
             <ConnectWallet theme="dark" />

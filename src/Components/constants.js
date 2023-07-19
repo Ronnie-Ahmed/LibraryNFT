@@ -1,11 +1,30 @@
 import { createContext } from "react";
+import { ethers } from "ethers";
 export const UserContext = createContext(null);
-export const deployaddress = "0xdcc0b6624c752a1Bc6a141845d7e7c458D15E828";
+export const deployaddress = "0x6013b1DA978bCFebaF0112CC1a9D088C482b5CB5";
+export const excontract = async () => {
+  try {
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(deployaddress, contractABI, signer);
+      return contract;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
 export const contractABI = [
   {
     type: "constructor",
     name: "",
-    inputs: [],
+    inputs: [
+      {
+        type: "address",
+        name: "_owner",
+        internalType: "address",
+      },
+    ],
     outputs: [],
     stateMutability: "nonpayable",
   },
@@ -97,44 +116,6 @@ export const contractABI = [
   },
   {
     type: "event",
-    name: "TokenListedSuccess",
-    inputs: [
-      {
-        type: "uint256",
-        name: "tokenId",
-        indexed: true,
-        internalType: "uint256",
-      },
-      {
-        type: "address",
-        name: "owner",
-        indexed: false,
-        internalType: "address",
-      },
-      {
-        type: "address",
-        name: "seller",
-        indexed: false,
-        internalType: "address",
-      },
-      {
-        type: "uint256",
-        name: "price",
-        indexed: false,
-        internalType: "uint256",
-      },
-      {
-        type: "bool",
-        name: "currentlyListed",
-        indexed: false,
-        internalType: "bool",
-      },
-    ],
-    outputs: [],
-    anonymous: false,
-  },
-  {
-    type: "event",
     name: "Transfer",
     inputs: [
       {
@@ -158,6 +139,65 @@ export const contractABI = [
     ],
     outputs: [],
     anonymous: false,
+  },
+  {
+    type: "function",
+    name: "accessedbooklist",
+    inputs: [
+      {
+        type: "address",
+        name: "myaddress",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        type: "uint256[]",
+        name: "",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "allListedBooks",
+    inputs: [],
+    outputs: [
+      {
+        type: "tuple[]",
+        name: "",
+        components: [
+          {
+            type: "address",
+            name: "bookowner",
+            internalType: "address",
+          },
+          {
+            type: "uint256",
+            name: "tokenId",
+            internalType: "uint256",
+          },
+          {
+            type: "string",
+            name: "bookId",
+            internalType: "string",
+          },
+          {
+            type: "string",
+            name: "tokenuri",
+            internalType: "string",
+          },
+          {
+            type: "uint256",
+            name: "accessPrice",
+            internalType: "uint256",
+          },
+        ],
+        internalType: "struct LibraryNFT.Book[]",
+      },
+    ],
+    stateMutability: "view",
   },
   {
     type: "function",
@@ -198,31 +238,7 @@ export const contractABI = [
   },
   {
     type: "function",
-    name: "createToken",
-    inputs: [
-      {
-        type: "string",
-        name: "tokenURI",
-        internalType: "string",
-      },
-      {
-        type: "uint256",
-        name: "price",
-        internalType: "uint256",
-      },
-    ],
-    outputs: [
-      {
-        type: "uint256",
-        name: "",
-        internalType: "uint256",
-      },
-    ],
-    stateMutability: "payable",
-  },
-  {
-    type: "function",
-    name: "executeSale",
+    name: "bookAccesslist",
     inputs: [
       {
         type: "uint256",
@@ -230,45 +246,65 @@ export const contractABI = [
         internalType: "uint256",
       },
     ],
-    outputs: [],
-    stateMutability: "payable",
+    outputs: [
+      {
+        type: "address[]",
+        name: "",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
   },
   {
     type: "function",
-    name: "getAllNFTs",
+    name: "changeBookInfo",
+    inputs: [
+      {
+        type: "uint256",
+        name: "_tokenId",
+        internalType: "uint256",
+      },
+      {
+        type: "string",
+        name: "_bookId",
+        internalType: "string",
+      },
+      {
+        type: "string",
+        name: "_tokenUri",
+        internalType: "string",
+      },
+      {
+        type: "uint256",
+        name: "_price",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "changeListingFee",
+    inputs: [
+      {
+        type: "uint256",
+        name: "newfee",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "contractowner",
     inputs: [],
     outputs: [
       {
-        type: "tuple[]",
+        type: "address",
         name: "",
-        components: [
-          {
-            type: "uint256",
-            name: "tokenId",
-            internalType: "uint256",
-          },
-          {
-            type: "address",
-            name: "owner",
-            internalType: "address payable",
-          },
-          {
-            type: "address",
-            name: "seller",
-            internalType: "address payable",
-          },
-          {
-            type: "uint256",
-            name: "price",
-            internalType: "uint256",
-          },
-          {
-            type: "bool",
-            name: "currentlyListed",
-            internalType: "bool",
-          },
-        ],
-        internalType: "struct NFTMARKETPLACE.ListedToken[]",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
@@ -294,7 +330,7 @@ export const contractABI = [
   },
   {
     type: "function",
-    name: "getCurrentToken",
+    name: "getListingFee",
     inputs: [],
     outputs: [
       {
@@ -307,60 +343,20 @@ export const contractABI = [
   },
   {
     type: "function",
-    name: "getLatestIdToListedToken",
-    inputs: [],
-    outputs: [
-      {
-        type: "tuple",
-        name: "",
-        components: [
-          {
-            type: "uint256",
-            name: "tokenId",
-            internalType: "uint256",
-          },
-          {
-            type: "address",
-            name: "owner",
-            internalType: "address payable",
-          },
-          {
-            type: "address",
-            name: "seller",
-            internalType: "address payable",
-          },
-          {
-            type: "uint256",
-            name: "price",
-            internalType: "uint256",
-          },
-          {
-            type: "bool",
-            name: "currentlyListed",
-            internalType: "bool",
-          },
-        ],
-        internalType: "struct NFTMARKETPLACE.ListedToken",
-      },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "getListPrice",
-    inputs: [],
-    outputs: [
+    name: "getaccess",
+    inputs: [
       {
         type: "uint256",
-        name: "",
+        name: "tokenId",
         internalType: "uint256",
       },
     ],
-    stateMutability: "view",
+    outputs: [],
+    stateMutability: "payable",
   },
   {
     type: "function",
-    name: "getListedTokenForId",
+    name: "hasAccess",
     inputs: [
       {
         type: "uint256",
@@ -370,76 +366,48 @@ export const contractABI = [
     ],
     outputs: [
       {
-        type: "tuple",
+        type: "bool",
         name: "",
-        components: [
-          {
-            type: "uint256",
-            name: "tokenId",
-            internalType: "uint256",
-          },
-          {
-            type: "address",
-            name: "owner",
-            internalType: "address payable",
-          },
-          {
-            type: "address",
-            name: "seller",
-            internalType: "address payable",
-          },
-          {
-            type: "uint256",
-            name: "price",
-            internalType: "uint256",
-          },
-          {
-            type: "bool",
-            name: "currentlyListed",
-            internalType: "bool",
-          },
-        ],
-        internalType: "struct NFTMARKETPLACE.ListedToken",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "getMyNFTs",
-    inputs: [],
+    name: "idtobook",
+    inputs: [
+      {
+        type: "uint256",
+        name: "",
+        internalType: "uint256",
+      },
+    ],
     outputs: [
       {
-        type: "tuple[]",
-        name: "",
-        components: [
-          {
-            type: "uint256",
-            name: "tokenId",
-            internalType: "uint256",
-          },
-          {
-            type: "address",
-            name: "owner",
-            internalType: "address payable",
-          },
-          {
-            type: "address",
-            name: "seller",
-            internalType: "address payable",
-          },
-          {
-            type: "uint256",
-            name: "price",
-            internalType: "uint256",
-          },
-          {
-            type: "bool",
-            name: "currentlyListed",
-            internalType: "bool",
-          },
-        ],
-        internalType: "struct NFTMARKETPLACE.ListedToken[]",
+        type: "address",
+        name: "bookowner",
+        internalType: "address",
+      },
+      {
+        type: "uint256",
+        name: "tokenId",
+        internalType: "uint256",
+      },
+      {
+        type: "string",
+        name: "bookId",
+        internalType: "string",
+      },
+      {
+        type: "string",
+        name: "tokenuri",
+        internalType: "string",
+      },
+      {
+        type: "uint256",
+        name: "accessPrice",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
@@ -470,22 +438,26 @@ export const contractABI = [
   },
   {
     type: "function",
-    name: "myURI",
+    name: "mintbook",
     inputs: [
       {
         type: "uint256",
-        name: "",
+        name: "_price",
         internalType: "uint256",
       },
-    ],
-    outputs: [
       {
         type: "string",
-        name: "",
+        name: "_tokenuri",
+        internalType: "string",
+      },
+      {
+        type: "string",
+        name: "_bookId",
         internalType: "string",
       },
     ],
-    stateMutability: "view",
+    outputs: [],
+    stateMutability: "payable",
   },
   {
     type: "function",
@@ -661,18 +633,5 @@ export const contractABI = [
     ],
     outputs: [],
     stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "updateListPrice",
-    inputs: [
-      {
-        type: "uint256",
-        name: "_listPrice",
-        internalType: "uint256",
-      },
-    ],
-    outputs: [],
-    stateMutability: "payable",
   },
 ];

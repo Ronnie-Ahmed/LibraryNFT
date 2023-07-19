@@ -1,21 +1,21 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Buy } from "../Pages/Buy";
-import { Sell } from "../Pages/Sell";
 import { Home } from "../Pages/Home";
-import { TokenDetails } from "../Pages/TokenDetails";
+import { Bookid } from "../Pages/Bookid";
+import { Readbook } from "../Pages/Readbook";
+import { Uploadbook } from "../Pages/Uploadbook";
 import { PageNotFound } from "../Pages/PageNotFound";
-import { Userprofile } from "../Pages/Userprofile";
+import { UserProfile } from "../Pages/UserProfile";
 
 export const Allroutes = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/buy" element={<Buy />} />
-        <Route path="/sell" element={<Sell />} />
-        <Route path="/buy/:id" element={<TokenDetails />} />
-        <Route path="/userprofile" element={<Userprofile />} />
+        <Route path="/Readbook" element={<Readbook />} />
+        <Route path="/Readbook/:bookid" element={<Bookid />} />
+        <Route path="/Uploadbook" element={<Uploadbook />} />
+        <Route path="/UserProfile" element={<UserProfile />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>

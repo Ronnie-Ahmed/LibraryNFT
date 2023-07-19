@@ -1,18 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
-import image2 from "../assets/mintbackground.jpg";
 
 export const Footer = () => {
   return (
     <footer
       className="bg-gray-800"
-      style={{
-        backgroundImage: `url(${image2})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      // style={{
+      //   backgroundImage: `url(${image2})`,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   backgroundRepeat: "no-repeat",
+      // }}
     >
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-wrap">
