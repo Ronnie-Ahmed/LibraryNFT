@@ -96,8 +96,10 @@ export const Readbook = () => {
               alt="loading"
               className="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
             />
-            <h1 className="text-3xl font-bold text-center">Connect Wallet</h1>
-            <h1 className="text-3xl font-bold text-center">
+            <h1 className="text-3xl  bg-black font-bold text-center text-white">
+              Connect Wallet
+            </h1>
+            <h1 className="text-3xl  bg-black  text-white font-bold text-center">
               Use Mumbai Testnet
             </h1>
           </div>

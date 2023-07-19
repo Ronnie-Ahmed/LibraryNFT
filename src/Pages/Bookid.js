@@ -89,7 +89,7 @@ export const Bookid = () => {
           value: ethers.utils.parseEther(price),
         });
         await tx.wait();
-        alert("Transaction Successful");
+        alert("Access Granted");
         const bookaccess = await contract.hasAccess(param.bookid);
         setaccess(bookaccess);
         const accesslist = await contract.bookAccesslist(param.bookid);
@@ -130,8 +130,12 @@ export const Bookid = () => {
                 alt="loading"
                 className="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
               />
-              <h1 className="text-3xl font-bold">Connect Wallet </h1>
-              <h1 className="text-3xl font-bold">Use Mumbai Testnet </h1>
+              <h1 className="text-3xl bg-black text-white font-bold">
+                Connect Wallet{" "}
+              </h1>
+              <h1 className="text-3xl bg-black  text-white font-bold">
+                Use Mumbai Testnet{" "}
+              </h1>
             </div>
           </div>
         ) : isLoading ? (
@@ -203,7 +207,7 @@ export const Bookid = () => {
                       className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-md border-2 border-green-500 transition-all duration-300 shadow-md backdrop-filter backdrop-blur-md bg-opacity-70 w-1/3 md:w-auto text-base md:text-lg lg:text-xl xl:text-2xl"
                       onClick={() => setIsFormOpen(true)}
                     >
-                      Open Form
+                      Change Price
                     </button>
                   )}
                   {isFormOpen && (

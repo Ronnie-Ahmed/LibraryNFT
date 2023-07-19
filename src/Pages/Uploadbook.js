@@ -116,8 +116,12 @@ export const Uploadbook = () => {
               alt="loading"
               class="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
             />
-            <h1 className="text-3xl font-bold ">Connect Wallet </h1>
-            <h1 className="text-3xl font-bold ">Use Mumbai Testnet </h1>
+            <h1 className="text-3xl bg-black text-white font-bold ">
+              Connect Wallet{" "}
+            </h1>
+            <h1 className="text-3xl bg-black text-white font-bold ">
+              Use Mumbai Testnet{" "}
+            </h1>
           </div>
         </div>
       ) : (
@@ -270,7 +274,7 @@ export const Uploadbook = () => {
                     type="submit"
                     className="btn btn-primary text-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-2 px-4 rounded-lg shadow-lg hover:shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30"
                   >
-                    Mint NFT
+                    Mint Book
                   </button>
                 ) : (
                   <p className="btn btn-primary text-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-2 px-4 rounded-lg shadow-lg hover:shadow-2xl backdrop-filter backdrop-blur-lg bg-opacity-30">

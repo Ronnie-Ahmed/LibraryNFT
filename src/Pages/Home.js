@@ -27,8 +27,12 @@ export const Home = () => {
             alt="loading"
             className="w-60 h-60 object-cover rounded-full mb-4 transition-transform transform-gpu hover:scale-110"
           />
-          <h1 className="text-3xl font-bold text-center">Connect Wallet</h1>
-          <h1 className="text-3xl font-bold text-center">Use Mumbai Testnet</h1>
+          <h1 className="text-3xl text-white  bg-black font-bold text-center">
+            Connect Wallet
+          </h1>
+          <h1 className="text-3xl text-white bg-black font-bold text-center">
+            Use Mumbai Testnet
+          </h1>
         </div>
       ) : (
         <section className="flex flex-col md:flex-row m-5 items-center mx-4 px-1 md:mx-16 rounded-lg p-4 md:p-8 transform transition-all duration-300 shadow-2xl shadow-cyan-400 hover:scale-105 mb-8">
