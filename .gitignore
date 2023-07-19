@@ -3,9 +3,10 @@
 # dependencies
 /node_modules
 /backend/node_modules
-/thirdweb-deploy/node_modules
-/thirdweb-deploy/cache*
-/thirdweb-deploy/artifacts*
+# /thirdweb-deploy/node_modules
+# /thirdweb-deploy/cache*
+# /thirdweb-deploy/artifacts*
+/thirdweb-deploy
 /backend
 /.pnp
 .pnp.js
