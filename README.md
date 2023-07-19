@@ -1,7 +1,7 @@
 
 # Live : [@Live Project Link](https://nftmarketplace-igfftl5e3-ronnie-ahmed.vercel.app/)
 
-# NFTMarketPlace
+# LibraryNFT
 
 The NFT Marketplace I developed is a game-changer for artists, creators, and collectors alike. It serves as a vibrant hub where individuals can seamlessly discover, buy, and sell unique digital assets, leveraging the power of non-fungible tokens (NFTs).
 
@@ -50,7 +50,7 @@ Install my-project with npm
 ##Project Video
 
 
-[![Thumbnail](https://github.com/Ronnie-Ahmed/NFTMARKETPLACE/assets/68500792/474591b1-7d85-4b3f-82b8-e62cb0e3fa0a)](https://github.com/Ronnie-Ahmed/NFTMARKETPLACE/assets/68500792/9a4d77ce-084c-4a90-9d4a-c028a186a50f)
+
 
 
 
@@ -58,15 +58,7 @@ Install my-project with npm
 
 
 ##Screen Shoots
-![Screenshot 2023-06-24 234455](https://github.com/Ronnie-Ahmed/NFTMARKETPLACE/assets/68500792/474591b1-7d85-4b3f-82b8-e62cb0e3fa0a)
 
-![2](https://github.com/Ronnie-Ahmed/NFTMARKETPLACE/assets/68500792/70f25b45-7d70-411e-933a-6325a47f7d5d)
-
-![3](https://github.com/Ronnie-Ahmed/NFTMARKETPLACE/assets/68500792/9b8bc6d3-facf-413d-8fcd-e345f04d7c89)
-
-![4](https://github.com/Ronnie-Ahmed/NFTMARKETPLACE/assets/68500792/58e4519e-4452-4e9f-a287-19980e1f40bf)
-
-![6](https://github.com/Ronnie-Ahmed/NFTMARKETPLACE/assets/68500792/cfa35566-302a-45ed-9a1b-f498bf0d3379)
 
 
 
