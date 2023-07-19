@@ -5,7 +5,7 @@ import { Bookid } from "../Pages/Bookid";
 import { Readbook } from "../Pages/Readbook";
 import { Uploadbook } from "../Pages/Uploadbook";
 import { PageNotFound } from "../Pages/PageNotFound";
-import { UserProfile } from "../Pages/UserProfile";
+import { Userprofile } from "../Pages/Userprofile";
 
 export const Allroutes = () => {
   return (
@@ -15,7 +15,7 @@ export const Allroutes = () => {
         <Route path="/Readbook" element={<Readbook />} />
         <Route path="/Readbook/:bookid" element={<Bookid />} />
         <Route path="/Uploadbook" element={<Uploadbook />} />
-        <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path="/Userprofile" element={<Userprofile />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>

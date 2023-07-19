@@ -11,7 +11,7 @@ import {
   useContractRead,
 } from "@thirdweb-dev/react";
 import { deployaddress } from "../Components/constants";
-export const UserProfile = () => {
+export const Userprofile = () => {
   const status = useConnectionStatus();
   const { contract } = useContract(deployaddress);
   const { data, isLoading } = useContractRead(contract, "allListedBooks");
@@ -61,7 +61,6 @@ export const UserProfile = () => {
         <section className="flex flex-col md:flex-row items-center px-1 md:mx-16 rounded-lg p-4 md:p-8 transform transition-all duration-300 shadow-2xl shadow-black hover:scale-105 mb-8 mt-20 md:mt-0">
           {data.map((item, key) => (
             <div key={item.tokenId.toString()} className="mr-4 ml-4 mb-6">
-              {/* {address === item.bookowner ? ( */}
               <Card2
                 accessPrice={ethers.utils.formatEther(item.accessPrice)}
                 tokenuri={item.tokenuri}
@@ -69,7 +68,6 @@ export const UserProfile = () => {
                 bookowner={item.bookowner}
                 bookid={item.bookid}
               />
-              {/* ) : null} */}
             </div>
           ))}
         </section>

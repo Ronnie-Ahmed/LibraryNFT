@@ -39,11 +39,8 @@ export const Card2 = ({
           .then((response) => {
             const jsondata = response.data;
             setdata(jsondata);
-
-            // Handle successful response
           })
           .catch((error) => {
-            // Handle error
             console.log(error);
           });
       }

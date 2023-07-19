@@ -107,7 +107,7 @@ export const Header = () => {
           <div className="flex flex-row space-between center p-1">
             {active && <ConnectWallet theme="dark" />}
             {address ? (
-              <Link to="/UserProfile">
+              <Link to="/Userprofile">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"

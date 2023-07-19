@@ -139,7 +139,7 @@ export const Bookid = () => {
             </div>
           </div>
         ) : isLoading ? (
-          <div className="flex items-center justify-center m-5 mx-4 px-1 md:mx-16 rounded-lg transform transition-all duration-300 shadow-2xl shadow-cyan-400 hover:scale-105 mb-8">
+          <div className="flex items-center justify-center m-5 mx-4 px-1 md:mx-16 rounded-lg transform transition-all duration-300 shadow-2xl shadow-cyan-400 hover:scale-105 mt-20 mb-8">
             <div className="flex flex-col items-center">
               <img
                 src={image2}
