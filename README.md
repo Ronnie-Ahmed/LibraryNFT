@@ -1,7 +1,7 @@
 
 # LibraryNFT - Revolutionizing Digital Book Ownership with NFTs 📚🔒
 
-![LibraryNFT Logo](https://library-nft.vercel.app/)
+![LibraryNFT-Live](https://library-nft.vercel.app/)
 
 ## Introduction
 
