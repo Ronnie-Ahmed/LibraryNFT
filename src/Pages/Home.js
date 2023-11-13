@@ -4,9 +4,40 @@ import walletconnect from "../assets/walletconnect.png";
 import { useConnectionStatus } from "@thirdweb-dev/react";
 
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
 
 export const Home = () => {
   const status = useConnectionStatus();
+  useEffect(() => {
+    changeChainID();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageChainId]);
+  const changeChainID = async () => {
+    try {
+      if (status === "connected") {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const chainId = await signer.getChainId();
+        setPageChainId(chainId);
+        if (chainId !== 0x13881) {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [
+              {
+                chainId: "0x13881",
+              },
+            ],
+          });
+        }
+      }
+    } catch (err) {
+      // console.log(err);
+      if (err.message === "User rejected the request.") {
+        alert("Please Connect to Mumbai Testnet");
+      }
+    }
+  };
 
   return (
     <div

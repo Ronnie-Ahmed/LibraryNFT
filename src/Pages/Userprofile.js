@@ -4,6 +4,8 @@ import walletconnect from "../assets/walletconnect.png";
 import { Card2 } from "../Components/Card2";
 import { ethers } from "ethers";
 import image2 from "../assets/bookloading.gif";
+import { useState, useEffect } from "react";
+import { ethers } from "ethers";
 
 import {
   useConnectionStatus,
@@ -15,6 +17,35 @@ export const Userprofile = () => {
   const status = useConnectionStatus();
   const { contract } = useContract(deployaddress);
   const { data, isLoading } = useContractRead(contract, "allListedBooks");
+  useEffect(() => {
+    changeChainID();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageChainId]);
+  const changeChainID = async () => {
+    try {
+      if (status === "connected") {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const chainId = await signer.getChainId();
+        setPageChainId(chainId);
+        if (chainId !== 0x13881) {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [
+              {
+                chainId: "0x13881",
+              },
+            ],
+          });
+        }
+      }
+    } catch (err) {
+      // console.log(err);
+      if (err.message === "User rejected the request.") {
+        alert("Please Connect to Mumbai Testnet");
+      }
+    }
+  };
 
   return (
     <div

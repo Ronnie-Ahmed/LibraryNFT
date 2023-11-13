@@ -4,7 +4,7 @@ import image from "../assets/homebackground.jpg";
 import image2 from "../assets/bookloading.gif";
 import { Card } from "../Components/Card";
 import { deployaddress, contractABI } from "../Components/constants";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useConnectionStatus } from "@thirdweb-dev/react";
 import walletconnect from "../assets/walletconnect.png";
 import { ethers } from "ethers";
@@ -75,6 +75,35 @@ export const Readbook = () => {
     fetchData();
     setAllNFTsUpdated(true);
   }
+  useEffect(() => {
+    changeChainID();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageChainId]);
+  const changeChainID = async () => {
+    try {
+      if (status === "connected") {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const chainId = await signer.getChainId();
+        setPageChainId(chainId);
+        if (chainId !== 0x13881) {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [
+              {
+                chainId: "0x13881",
+              },
+            ],
+          });
+        }
+      }
+    } catch (err) {
+      // console.log(err);
+      if (err.message === "User rejected the request.") {
+        alert("Please Connect to Mumbai Testnet");
+      }
+    }
+  };
 
   return (
     <div

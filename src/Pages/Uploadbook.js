@@ -5,6 +5,8 @@ import loading2 from "../assets/Loading2.gif";
 import { create } from "ipfs-http-client";
 import { Buffer } from "buffer";
 import nfticon from "../assets/iconlibrary2.jpg";
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
 import {
   useAddress,
   useContract,
@@ -12,8 +14,6 @@ import {
 } from "@thirdweb-dev/react";
 
 import { deployaddress } from "../Components/constants";
-import { useState } from "react";
-import { ethers } from "ethers";
 
 const projectId = "2NUvwy5K9EzmrmotQqVH303hmvV";
 const projectSecret = "645df3033ab65599cf00069126867730";
@@ -91,6 +91,36 @@ export const Uploadbook = () => {
       console.error("contract call failure", err);
     } finally {
       setIsLoading(false); // Set isLoading back to false when the contract call is completed
+    }
+  };
+
+  useEffect(() => {
+    changeChainID();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageChainId]);
+  const changeChainID = async () => {
+    try {
+      if (status === "connected") {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const chainId = await signer.getChainId();
+        setPageChainId(chainId);
+        if (chainId !== 0x13881) {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [
+              {
+                chainId: "0x13881",
+              },
+            ],
+          });
+        }
+      }
+    } catch (err) {
+      // console.log(err);
+      if (err.message === "User rejected the request.") {
+        alert("Please Connect to Mumbai Testnet");
+      }
     }
   };
 
