@@ -29,6 +29,7 @@ const ipfs = create({
 });
 
 export const Uploadbook = () => {
+  const [pageChainId, setPageChainId] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const walletaddress = useAddress();
   const { contract } = useContract(deployaddress);

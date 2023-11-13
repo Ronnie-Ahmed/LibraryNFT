@@ -11,6 +11,7 @@ import { ethers } from "ethers";
 import axios from "axios";
 
 export const Readbook = () => {
+  const [pageChainId, setPageChainId] = useState(0);
   const buttonRef = useRef(null);
   const status = useConnectionStatus();
   const [data, updateData] = useState([]);

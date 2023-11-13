@@ -14,6 +14,7 @@ import {
 } from "@thirdweb-dev/react";
 import { deployaddress } from "../Components/constants";
 export const Userprofile = () => {
+  const [pageChainId, setPageChainId] = useState(0);
   const status = useConnectionStatus();
   const { contract } = useContract(deployaddress);
   const { data, isLoading } = useContractRead(contract, "allListedBooks");

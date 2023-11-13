@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 export const Home = () => {
+  const [pageChainId, setPageChainId] = useState(0);
   const status = useConnectionStatus();
   useEffect(() => {
     changeChainID();
