@@ -5,7 +5,6 @@ import { Card2 } from "../Components/Card2";
 import { ethers } from "ethers";
 import image2 from "../assets/bookloading.gif";
 import { useState, useEffect } from "react";
-import { ethers } from "ethers";
 
 import {
   useConnectionStatus,

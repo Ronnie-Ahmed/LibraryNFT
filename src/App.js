@@ -2,16 +2,16 @@ import "./App.css";
 import { Header } from "./Components/Header";
 import { Footer } from "./Components/Footer";
 import { Allroutes } from "./Components/Allroutes";
-import {  useConnectionStatus } from "@thirdweb-dev/react";
-import { useEffect } from "react";
+import { useConnectionStatus } from "@thirdweb-dev/react";
+import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 function App() {
   const status = useConnectionStatus();
 
-const [pageChainId, setPageChainId] = useState(0);
+  const [pageChainId, setPageChainId] = useState(0);
 
-const changeChainID = async () => {
+  const changeChainID = async () => {
     if (status === "connected") {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
@@ -30,7 +30,7 @@ const changeChainID = async () => {
     }
   };
 
- useEffect(() => {
+  useEffect(() => {
     changeChainID();
   }, [pageChainId]);
   return (
